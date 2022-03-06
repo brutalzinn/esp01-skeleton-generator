@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 app.get('/about', function(req, res) {
   res.render('pages/about');
 });
-//THANKS TO https://stackoverflow.com/questions/20107303/dynamically-create-and-stream-zip-to-client
+
 app.post('/generate', function(req, res) {
   var zip = archiver('zip');
 
