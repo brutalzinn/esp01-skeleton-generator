@@ -4,14 +4,10 @@
 #include "config.h"
 
 long lastMessage = 0;
-//Variáveis
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
 void callback(char* topic, byte* payload, unsigned int length) {
-//  Serial.print("Message arrived [");
-//  Serial.print(topic);
-//  Serial.print("] ");
   for (int i=0;i<length;i++) {
     Serial.print((char)payload[i]);
   }
@@ -19,7 +15,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 void reconnect() {
-  // Loop until we're reconnected
    client.setServer(mqttserver, mqttserverport);
    client.setCallback(callback);
   while (!client.connected()) {
@@ -52,7 +47,7 @@ void setup() {
     Serial.print(".");
   }
   Serial.println("");
-  Serial.print("Conectado! IP address: ");
+  Serial.print("Connected! IP address: ");
   Serial.println(WiFi.localIP());
 
   if (!client.connected()) {

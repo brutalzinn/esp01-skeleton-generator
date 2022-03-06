@@ -59,9 +59,6 @@ console.log(form)
   zip.append(generateConfig(form), { name: 'config.h' })
   .file('files/esp01homeassistant.ino', { name: 'esp01homeassistant.ino' })
   .finalize();
-
-  //zip.finalize();
-
 });
 
 app.listen(PORT);
