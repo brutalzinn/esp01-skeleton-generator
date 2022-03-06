@@ -1,4 +1,5 @@
 var app = require('express')();
+var express = require("express")
 var archiver = require('archiver');
 var parser = require('body-parser');
 const { generateConfig } = require('./utils')
@@ -11,6 +12,7 @@ app.use(parser.json())
  
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
 
 app.get('/', function(req, res) {
   res.render('pages/index');
@@ -28,15 +30,11 @@ app.post('/generate', function(req, res) {
     res.status(500).send({error: err.message});
   });
 
-  //on stream closed we can end the request
   zip.on('end', function() {
     console.log('Archive wrote %d bytes', zip.pointer());
   });
 
-  //set the archive name
   res.attachment('esp01homeassistant.zip');
-
-  //this is the streaming magic
   zip.pipe(res);
 
   var form = {
