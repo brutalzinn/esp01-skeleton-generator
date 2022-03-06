@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  server:
+    build: .
+    command: npm start
+    container_name: node_server_container
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/home/node/app
