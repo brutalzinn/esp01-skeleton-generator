@@ -4,7 +4,7 @@ var parser = require('body-parser');
 const { generateConfig } = require('./utils')
 
 var p = require('path');
-const PORT = 3000
+const PORT = process.env.PORT || 3000;
 
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json())

@@ -1,5 +1,3 @@
 # Project2 Docker Template
 
-Docker nodejs template
-
-This is a project schema to uses nodejs and docker compose.
+You can access this project [esp01-skeleton-generator](esp01-skeleton-generator)
