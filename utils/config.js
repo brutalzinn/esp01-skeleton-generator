@@ -21,7 +21,7 @@ function generateConfigWebSocket(form){
 var generic_config = `
 #define WIFI_SSID "${form.network_name}"
 #define WIFI_PASS "${form.network_password}"
-#define SOCK_PORT "${form.socket_port}"
+#define SOCK_PORT ${form.socket_port}
 IPAddress ip(${convertIP(form.esp_ip)});
 IPAddress gateway(${convertIP(form.esp_gateway)});
 IPAddress subnet(${convertIP(form.esp_subnet)});

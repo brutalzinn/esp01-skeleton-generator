@@ -2,7 +2,7 @@ var app = require('express')();
 var express = require("express")
 var archiver = require('archiver');
 var parser = require('body-parser');
-const { generateConfigMQTT, generateConfigWebSocket } = require('./utils')
+const { generateConfigMQTT, generateConfigWebSocket } = require('./utils/config')
 const PORT = process.env.PORT || 3000;
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json())
