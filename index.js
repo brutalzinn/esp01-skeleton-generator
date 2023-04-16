@@ -4,17 +4,15 @@ var archiver = require('archiver');
 var parser = require('body-parser');
 const { generateConfigMQTT, generateConfigWebSocket } = require('./utils')
 const PORT = process.env.PORT || 3000;
-
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json())
- 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+
 app.get('/', function(req, res) {
   const generator = req.query.generator || 'mqtt'
   res.render('pages/index', {generator});
 });
-
 
 app.get('/about', function(req, res) {
   res.render('pages/about');
