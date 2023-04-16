@@ -13,37 +13,30 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
   switch (type) {
     case WStype_DISCONNECTED:
       break;
-    case WStype_CONNECTED:
-      IPAddress ip = webSocket.remoteIP(num);
-      Serial.print("Connected:");
-      Serial.println(ip);
-      break;
-    case WStype_TEXT:
+    case WStype_CONNECTED: {
+      IPAddress connectedIp = webSocket.remoteIP(num);
+      Serial.print("connected:");
+      Serial.println(connectedIp);
+    }
+    break;
+    case WStype_TEXT: {
       String text = String((char *) &payload[0]);
-        //just for debug
-        Serial.print(text);
-        Serial.print(num);
-        Serial.println(type);
-        if (text == "LED_1_ON") {
-          webSocket.sendTXT(0, "LED_1_ON");
-          digitalWrite(LED_BUILTIN, HIGH);
-        }
-       break;
-    case default:
-    Serial.println("COMMAND NOT FOUND");
+        Serial.println(text);
+    }
+     break;
+   default:
+    Serial.println("WAITING COMMANDS");
+    break;
   }
 
 }
 
 void setup() {
-
-  // Inicialização do LED
   Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, OFF);
   WiFi.config(ip, dns, gateway, subnet);
   WiFi.begin(WIFI_SSID, WIFI_PASS);
-  Serial.println("Connecting..");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(". ");
     delay(100);
