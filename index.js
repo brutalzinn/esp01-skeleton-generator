@@ -3,21 +3,16 @@ var express = require("express")
 var archiver = require('archiver');
 var parser = require('body-parser');
 const { generateConfigMQTT, generateConfigWebSocket } = require('./utils')
-
-var p = require('path');
 const PORT = process.env.PORT || 3000;
 
 app.use(parser.urlencoded({ extended: false }))
 app.use(parser.json())
  
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
-
 app.get('/', function(req, res) {
-  const params = req.query
-  console.log(params)
-  res.render('pages/index', params);
+  const generator = req.query.generator || 'mqtt'
+  res.render('pages/index', {generator});
 });
 
 
@@ -89,4 +84,7 @@ app.post('/generate/websocket', function(req, res) {
 });
 
 
-app.listen(PORT);
+
+app.listen(PORT, () =>{
+  console.log("PROJECT RUNNING AT %d", PORT)
+});

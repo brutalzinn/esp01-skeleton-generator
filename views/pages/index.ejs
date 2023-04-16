@@ -24,7 +24,7 @@ function changePartial(){
 }
 </script>
 <main>
-  <%if (generator == 'mqtt') { %>
+  <%if ( generator == 'mqtt') { %>
        <%- include('../partials/generators/mqtt'); %>
   <% } else { %>
     <%- include('../partials/generators/websocket'); %>
