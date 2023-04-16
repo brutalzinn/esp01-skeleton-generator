@@ -66,12 +66,13 @@ app.post('/generate/websocket', function(req, res) {
     console.log('Archive wrote %d bytes', zip.pointer());
   });
 
-  res.attachment('esp8266_websocket.zip');
+  res.attachment('esp01_websocket.zip');
   zip.pipe(res);
 
   var form = {
     network_name : req.body.network_name,
     network_password : req.body.network_password,
+    socket_port: req.body.socket_port,
     esp_ip : req.body.network_ip,
     esp_gateway : req.body.network_gateway,
     esp_subnet : req.body.network_subnet,
