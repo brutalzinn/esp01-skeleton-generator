@@ -1,0 +1,64 @@
+ <div class="jumbotron">
+        <h1>ESP 01 MQTT EXAMPLE</h1>
+        <!-- <img src="esquematico.png" /> -->
+</div>
+
+<form name="form1" method="POST" action="/generate/mqtt">
+    <table>
+        <tr>
+            <td>Network name</td>
+            <td><input type="text" name="network_name" ></td>
+        </tr>
+        <tr>
+            <td>Network Password</td>
+            <td><input type="text" name="network_password" ></td>
+        </tr>
+        <tr>
+            <td>MQTT Server</td>
+            <td><input type="text" name="mqtt_server" ></td>
+        </tr>
+        <tr>
+            <td>MQTT PORT</td>
+            <td><input type="text" value="1883" name="mqtt_port" ></td>
+        </tr>
+        <tr>
+            <td>MQTT USUÁRIO</td>
+            <td><input type="text" name="mqtt_user" ></td>
+        </tr>
+        <tr>
+            <td>MQTT SENHA</td>
+            <td><input type="text" name="mqtt_password" ></td>
+        </tr>
+        <tr>
+            <td>MQTT QUEUE INPUT</td>
+            <td><input type="text" name="mqtt_queue_input" ></td>
+        </tr>
+        <tr>
+            <td>MQTT QUEUE OUTPUT</td>
+            <td><input type="text" name="mqtt_queue_output" ></td>
+        </tr>
+        <tr>
+            <td>MQTT QUEUE INTERVAL(MS)</td>
+            <td><input type="text" value="5000" name="mqtt_interval" ></td>
+        </tr>
+        <tr>
+            <td>IP ADDRESS</td>
+            <td><input type="text" value="192.168.0.155" name="network_ip" ></td>
+        </tr>
+        <tr>
+            <td>Network gateway</td>
+            <td><input type="text" value="192.168.0.1" name="network_gateway" ></td>
+        </tr>
+        <tr>
+            <td>Network subnet</td>
+            <td><input type="text" value="255.255.255.0" name="network_subnet" ></td>
+        </tr>
+        <tr>
+            <td>Network dns</td>
+            <td><input type="text" value="192.168.0.1" name="network_dns" ></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Generate Skeleton" ></td>
+        </tr>
+    </table>
+</form>   

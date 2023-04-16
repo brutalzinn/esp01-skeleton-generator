@@ -9,76 +9,30 @@
     <%- include('../partials/header'); %>
 </header>
 
-<main>
-    <div class="jumbotron">
-        <h1>ESP 01 SKELETON GENERATOR</h1>
-        <p>
-            SKELETON GENERATOR IS FOR COMMUNICATION FROM AN ARDUINO AND AN MQTT SERVER USING AN ESP 01 AS A MESSAGE SENDER/RECEIVER
-        </p>
-        <img src="esquematico.png" />
+<select id="examples" onchange="changePartial()">
+  <option value="mqtt">Select the generator type</option>
+  <option value="mqtt">MQTT</option>
+  <option value="websocket">Web Socket</option>
+</select>
+<script>
 
-    </div>
-   
+function changePartial(){
+    var partial = document.getElementById("examples").value;
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('generator', partial);
+    window.location.search = urlParams;
+}
+</script>
+<main>
+  <%if (generator == 'mqtt') { %>
+       <%- include('../partials/generators/mqtt'); %>
+  <% } else { %>
+    <%- include('../partials/generators/websocket'); %>
+ <% } %>
+
+
 </main>
-<form name="form1" method="POST" action="/generate">
-    <table>
-        <tr>
-            <td>Network name</td>
-            <td><input type="text" name="frede" ></td>
-        </tr>
-        <tr>
-            <td>Network Password</td>
-            <td><input type="text" name="frede_senha" ></td>
-        </tr>
-        <tr>
-            <td>MQTT Server</td>
-            <td><input type="text" name="fmqttserver" ></td>
-        </tr>
-        <tr>
-            <td>MQTT PORT</td>
-            <td><input type="text" value="1883" name="fmqttserverport" ></td>
-        </tr>
-        <tr>
-            <td>MQTT USUÁRIO</td>
-            <td><input type="text" name="fmqttuser" ></td>
-        </tr>
-        <tr>
-            <td>MQTT SENHA</td>
-            <td><input type="text" name="fmqttpass" ></td>
-        </tr>
-        <tr>
-            <td>MQTT QUEUE INPUT</td>
-            <td><input type="text" name="fMQTTQUEUEINPUT" ></td>
-        </tr>
-        <tr>
-            <td>MQTT QUEUE OUTPUT</td>
-            <td><input type="text" name="fMQTTQUEUEOUTPUT" ></td>
-        </tr>
-        <tr>
-            <td>MQTT QUEUE INTERVAL(MS)</td>
-            <td><input type="text" value="5000" name="fmqtt_interval" ></td>
-        </tr>
-        <tr>
-            <td>IP ADDRESS</td>
-            <td><input type="text" value="192.168.0.155" name="fesp_ip" ></td>
-        </tr>
-        <tr>
-            <td>Network gateway</td>
-            <td><input type="text" value="192.168.0.1" name="fesp_gateway" ></td>
-        </tr>
-        <tr>
-            <td>Network subnet</td>
-            <td><input type="text" value="255.255.255.0" name="fesp_subnet" ></td>
-        </tr>
-        <tr>
-            <td>Network dns</td>
-            <td><input type="text" value="192.168.0.1" name="fesp_dns" ></td>
-        </tr>
-        <tr>
-        <td colspan="2"><input type="submit" value="Generate Skeleton" ></td>
-        </tr>
-    </table>
-</form>   
+
 <footer>
     <%- include('../partials/footer'); %>
 </footer>
